@@ -11,4 +11,19 @@ public class HelloContainer {
         return "Hello World!";
     }
 
+    @RequestMapping("/docker")
+    public String docker() {
+        return "Hello Docker!";
+    }
+
+    @RequestMapping("/spring")
+    public String spring() {
+        return "Hello Spring!";
+    }
+
+    @RequestMapping("/")
+    public String index() {
+        return "Welcome to this little demo application. Feel free to try the other pages.";
+    }
+
 }
