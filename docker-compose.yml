@@ -7,9 +7,9 @@ services:
                         - "8080:8080"
                 environment: 
                         - JAEGER_SERVICE_NAME=hello_service
-                        # - JAEGER_AGENT_HOST=53.52.34.56
-                        # - JAEGER_AGENT_PORT=6831
-                        - JAEGER_ENDPOINT=http://53.52.34.56:14268/api/traces
+                        - JAEGER_AGENT_HOST=jaeger
+                        - JAEGER_AGENT_PORT=6831
+                        # - JAEGER_ENDPOINT=http://jaeger:14268/api/traces
         jaeger: 
                 image: jaegertracing/all-in-one:latest
                 ports:
