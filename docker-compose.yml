@@ -1,15 +1,6 @@
 version: '2'
 
-services:
-        demo:
-                build: opentracing_demo/.
-                ports: 
-                        - "8080:8080"
-                environment: 
-                        - JAEGER_SERVICE_NAME=hello_service
-                        # - JAEGER_AGENT_HOST=53.52.34.56
-                        # - JAEGER_AGENT_PORT=6831
-                        - JAEGER_ENDPOINT=http://53.52.34.56:14268/api/traces
+services:           
         jaeger: 
                 image: jaegertracing/all-in-one:latest
                 ports:
@@ -20,3 +11,12 @@ services:
                         - "16686:16686"
                         - "14268:14268"
                         - "9411:9411"
+        demo:
+                build: opentracing_demo/.
+                ports: 
+                        - "8080:8080"
+                environment: 
+                        - JAEGER_SERVICE_NAME=hello_service
+                        - JAEGER_AGENT_HOST=jaeger
+                        - JAEGER_AGENT_PORT=6831 
+                        - JAEGER_SAMPLER_MANAGER_HOST_PORT=jaeger:5778
